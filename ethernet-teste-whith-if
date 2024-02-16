@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Hi, I'm simple utility to check website accessibility"
+echo "Enter IP address or domain name website"
+
+read addr
+ipRouter=192.168.1.1
+
+if ping -c 4 $addr && ping -c 4 $ipRouter
+
+then
+	echo "The site is available, network is working without errors"
+else 
+	echo "Validation error, check networl settings and retry request"
+	trace $addr || ifconfig
+fi
